@@ -1,7 +1,8 @@
 from django.urls import path
 from ..posts.views import PostDeleteView, PostListView,PostCreateView, PostUpdateView, PostRetrieveView
 from ..categories.views import CategoryListView,CategoryCreateView, CategoryDeleteView, CategoryUpdateView, CategoryRetrieveView
-from ..likes.views import LikeListView, LikeCreateView, LikeUndoView
+from ..likes.views import LikeListView, LikeCreateView, LikeUndoView, LikeRetrieveView
+from ..comments.views import CommentRetrieveView, CommentListView, CommentCreateView, CommentUpdateView, CommentDeleteView
 
 urlpatterns = [
     path('posts/', PostListView.as_view(), name='Posts'),
@@ -17,8 +18,15 @@ urlpatterns = [
     path('categories/delete/<int:pk>/', CategoryDeleteView.as_view(), name='Categories Delete'),
 
     path('likes/', LikeListView.as_view(), name='Like Create'),
+    path('likes/<int:pk>/', LikeRetrieveView.as_view(), name='Like Create'),
     path('likes/create/', LikeCreateView.as_view(), name='Like Create'),
     path('likes/delete/<int:pk>/', LikeUndoView.as_view(), name='Like Undo'),
+
+    path('comments/', CommentListView.as_view(), name='Comment Create'),
+    path('comments/<int:pk>/', CommentRetrieveView.as_view(), name='Comment Create'),
+    path('comments/create/', CommentCreateView.as_view(), name='Comment Create'),
+    path('comments/update/<int:pk>/', CommentUpdateView.as_view(), name='Comment Update'),
+    path('comments/delete/<int:pk>/', CommentDeleteView.as_view(), name='Comment Delete'),
 ]
 
 

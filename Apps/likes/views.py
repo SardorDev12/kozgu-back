@@ -12,6 +12,15 @@ class LikeListView(generics.ListAPIView):
     def get_queryset(self):
         user = self.request.user
         return Like.objects.filter(user_id=user)
+    
+class LikeRetrieveView(generics.RetrieveAPIView):
+    queryset = Like.objects.all()
+    serializer_class = LikeSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Like.objects.filter(user_id=user)
 
 class LikeCreateView(generics.CreateAPIView):
     queryset = Like.objects.all()

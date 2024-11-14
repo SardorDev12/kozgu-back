@@ -9,7 +9,7 @@ class Post(models.Model):
         ('published', 'Published'),
     ]
 
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200,unique=True)
     content = models.TextField(default='')
     author = models.ForeignKey(User, on_delete=models.CASCADE, to_field='username')
     category = models.ManyToManyField(Category, related_name="posts")
