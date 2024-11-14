@@ -20,4 +20,4 @@ class ProfileCreateView(generics.CreateAPIView):
 class ProfileRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    lookup_field = 'pk'  
+     
