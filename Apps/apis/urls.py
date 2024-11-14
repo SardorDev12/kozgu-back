@@ -3,6 +3,7 @@ from ..posts.views import PostDeleteView, PostListView,PostCreateView, PostUpdat
 from ..categories.views import CategoryListView,CategoryCreateView, CategoryDeleteView, CategoryUpdateView, CategoryRetrieveView
 from ..likes.views import LikeListView, LikeCreateView, LikeUndoView, LikeRetrieveView
 from ..comments.views import CommentRetrieveView, CommentListView, CommentCreateView, CommentUpdateView, CommentDeleteView
+from ..profiles.views import ProfileCreateView, ProfileListView, ProfileRetrieveUpdateDestroyView
 
 urlpatterns = [
     path('posts/', PostListView.as_view(), name='Posts'),
@@ -17,16 +18,20 @@ urlpatterns = [
     path('categories/update/<int:pk>/', CategoryUpdateView.as_view(), name='Categories Update'),
     path('categories/delete/<int:pk>/', CategoryDeleteView.as_view(), name='Categories Delete'),
 
-    path('likes/', LikeListView.as_view(), name='Like Create'),
-    path('likes/<int:pk>/', LikeRetrieveView.as_view(), name='Like Create'),
+    path('likes/', LikeListView.as_view(), name='Likes'),
+    path('likes/<int:pk>/', LikeRetrieveView.as_view(), name='Like'),
     path('likes/create/', LikeCreateView.as_view(), name='Like Create'),
     path('likes/delete/<int:pk>/', LikeUndoView.as_view(), name='Like Undo'),
 
-    path('comments/', CommentListView.as_view(), name='Comment Create'),
-    path('comments/<int:pk>/', CommentRetrieveView.as_view(), name='Comment Create'),
+    path('comments/', CommentListView.as_view(), name='Comments'),
+    path('comments/<int:pk>/', CommentRetrieveView.as_view(), name='Comment'),
     path('comments/create/', CommentCreateView.as_view(), name='Comment Create'),
     path('comments/update/<int:pk>/', CommentUpdateView.as_view(), name='Comment Update'),
     path('comments/delete/<int:pk>/', CommentDeleteView.as_view(), name='Comment Delete'),
+
+    path('profiles/', ProfileListView.as_view(), name='profile-list-create'),
+    path('profiles/create/', ProfileCreateView.as_view(), name='profile-list-create'),
+    path('profiles/<int:pk>/', ProfileRetrieveUpdateDestroyView.as_view(), name='profile-detail'),
 ]
 
 
