@@ -31,12 +31,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'accounts',
-    'apis',
-    'categories',
-    'comments',
-    'likes',
-    'posts',
+    'Apps.accounts',
+    'Apps.apis',
+    'Apps.categories',
+    'Apps.comments',
+    'Apps.likes',
+    'Apps.posts',
     'drf_yasg',
     'rest_framework',
     'django.contrib.admin',
