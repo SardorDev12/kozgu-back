@@ -4,7 +4,8 @@ from ..categories.views import CategoryListView,CategoryCreateView, CategoryDele
 from ..likes.views import LikeListView, LikeCreateView, LikeUndoView, LikeRetrieveView
 from ..comments.views import CommentRetrieveView, CommentListView, CommentCreateView, CommentUpdateView, CommentDeleteView
 from ..profiles.views import ProfileCreateView, ProfileListView, ProfileRetrieveUpdateDestroyView
-from ..accounts.views import UserCreateView, UserListView, UserUpdateView, UserDeleteView, UserRetrieveView
+from ..accounts.views import RegisterView, HomeView, LogoutView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path('posts/', PostListView.as_view(), name='Posts'),
@@ -34,11 +35,11 @@ urlpatterns = [
     path('profiles/create/', ProfileCreateView.as_view(), name='profile-list-create'),
     path('profiles/<int:pk>/', ProfileRetrieveUpdateDestroyView.as_view(), name='profile-detail'),
 
-    path('accounts/', UserListView.as_view(), name='accounts'),
-    path('accounts/<int:pk>/', UserRetrieveView.as_view(), name='accounts'),
-    path('accounts/create/', UserCreateView.as_view(), name='accounts Create'),
-    path('accounts/update/<int:pk>/', UserUpdateView.as_view(), name='accounts Update'),
-    path('accounts/delete/<int:pk>/', UserDeleteView.as_view(), name='accounts Delete'),
+    path('login/', TokenObtainPairView.as_view(), name="token"),
+    path('token/refresh/', TokenRefreshView.as_view(), name="token_refresh"),
+    path('register/',  RegisterView.as_view(), name='register'),
+    path('logout/', LogoutView.as_view(), name='user_logout'),
+    path('home/', HomeView.as_view(), name='home'),
 ]
 
 
