@@ -4,7 +4,7 @@ from ..categories.views import CategoryListView,CategoryCreateView, CategoryDele
 from ..likes.views import LikeListView, LikeCreateView, LikeUndoView, LikeRetrieveView
 from ..comments.views import CommentRetrieveView, CommentListView, CommentCreateView, CommentUpdateView, CommentDeleteView
 from ..profiles.views import ProfileCreateView, ProfileListView, ProfileRetrieveUpdateDestroyView
-from ..accounts.views import UserCreateView
+from ..accounts.views import UserCreateView, UserListView, UserUpdateView, UserDeleteView, UserRetrieveView
 
 urlpatterns = [
     path('posts/', PostListView.as_view(), name='Posts'),
@@ -34,7 +34,11 @@ urlpatterns = [
     path('profiles/create/', ProfileCreateView.as_view(), name='profile-list-create'),
     path('profiles/<int:pk>/', ProfileRetrieveUpdateDestroyView.as_view(), name='profile-detail'),
 
-    path('accounts/create/', UserCreateView.as_view(), name='user-list-create'),
+    path('accounts/', UserListView.as_view(), name='accounts'),
+    path('accounts/<int:pk>/', UserRetrieveView.as_view(), name='accounts'),
+    path('accounts/create/', UserCreateView.as_view(), name='accounts Create'),
+    path('accounts/update/<int:pk>/', UserUpdateView.as_view(), name='accounts Update'),
+    path('accounts/delete/<int:pk>/', UserDeleteView.as_view(), name='accounts Delete'),
 ]
 
 

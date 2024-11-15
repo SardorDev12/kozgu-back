@@ -1,6 +1,5 @@
 from .serializers import LikeSerializer
 from rest_framework import generics
-from django.contrib.auth.models import User
 from .models import Like
 from rest_framework.permissions import IsAuthenticated
 
