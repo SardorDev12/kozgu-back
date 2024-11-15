@@ -33,6 +33,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+
 
 # Application definition
 
@@ -101,6 +104,7 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',  # For browsable API interface
     ),
 }
+
 
 
 # Password validation

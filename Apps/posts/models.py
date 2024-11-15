@@ -1,6 +1,7 @@
 from django.db import models
 from ..categories.models import Category
-from django.contrib.auth.models import User
+from django.conf import settings
+
 
 class Post(models.Model):
     STATUS_CHOICES = [
@@ -11,7 +12,7 @@ class Post(models.Model):
 
     title = models.CharField(max_length=200,unique=True)
     content = models.TextField(default='')
-    author = models.ForeignKey(User, on_delete=models.CASCADE, to_field='username')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, to_field='username')
     category = models.ManyToManyField(Category, related_name="posts")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
