@@ -6,7 +6,7 @@ from ..comments.views import CommentRetrieveView, CommentListView, CommentCreate
 from ..profiles.views import ProfileCreateView, ProfileListView, ProfileRetrieveUpdateDestroyView
 from ..accounts.views import RegisterView, HomeView, LogoutView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from ..tags.views import TagListCreateView, TagRetrieveUpdateDestroyView
+from ..tags.views import TagCreateView, TagDeleteView, TagRetrieveView, TagUpdateView, TagListView
 
 urlpatterns = [
     path('posts/', PostListView.as_view(), name='Posts'),
@@ -43,6 +43,9 @@ urlpatterns = [
     path('home/', HomeView.as_view(), name='home'),
 
 
-    path('tags/', TagListCreateView.as_view(), name='tags'),
-    path('tags/<int:pk>/', TagRetrieveUpdateDestroyView.as_view(), name='tags update'),
+    path('tags/', TagListView.as_view(), name='Tags'),
+    path('categories/create/', TagCreateView.as_view(), name='Tags Create'),
+    path('tags/<int:pk>/', TagRetrieveView.as_view(), name='Tags Retrieve'),
+    path('tags/update/<int:pk>/', TagUpdateView.as_view(), name='Tags Update'),
+    path('tags/delete/<int:pk>/', TagDeleteView.as_view(), name='Tags Delete'),
 ]

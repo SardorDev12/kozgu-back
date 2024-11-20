@@ -1,6 +1,9 @@
 from rest_framework import serializers
+
+from ..tags.models import Tag
 from .models import Post
 from ..categories.models import Category
+
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,6 +14,7 @@ class PostSerializer(serializers.ModelSerializer):
             'content',
             'author',
             'category',
+            'tag',
             'created_at',
             'updated_at',
             'status'
@@ -21,4 +25,11 @@ class PostSerializer(serializers.ModelSerializer):
         many=True,
         slug_field='name',
         queryset=Category.objects.all()
+    )
+
+    
+    tag = serializers.SlugRelatedField(
+        many=True,
+        queryset=Tag.objects.all(),
+        slug_field='name'
     )
