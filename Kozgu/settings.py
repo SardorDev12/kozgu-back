@@ -43,6 +43,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 INSTALLED_APPS = [
     'corsheaders',
+    'Apps.tags',
     'Apps.accounts',
     'Apps.apis',
     'Apps.categories',

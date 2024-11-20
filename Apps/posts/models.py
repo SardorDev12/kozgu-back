@@ -1,6 +1,7 @@
 from django.db import models
 from ..categories.models import Category
 from django.conf import settings
+from ..tags.models import Tag
 
 
 class Post(models.Model):
@@ -14,6 +15,7 @@ class Post(models.Model):
     content = models.TextField(default='')
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, to_field='username')
     category = models.ManyToManyField(Category, related_name="posts")
+    tag_id = models.ManyToManyField(Tag, related_name="posts", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')

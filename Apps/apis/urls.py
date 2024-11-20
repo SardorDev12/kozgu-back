@@ -6,6 +6,7 @@ from ..comments.views import CommentRetrieveView, CommentListView, CommentCreate
 from ..profiles.views import ProfileCreateView, ProfileListView, ProfileRetrieveUpdateDestroyView
 from ..accounts.views import RegisterView, HomeView, LogoutView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from ..tags.views import TagListCreateView, TagRetrieveUpdateDestroyView
 
 urlpatterns = [
     path('posts/', PostListView.as_view(), name='Posts'),
@@ -40,6 +41,8 @@ urlpatterns = [
     path('register/',  RegisterView.as_view(), name='register'),
     path('logout/', LogoutView.as_view(), name='user_logout'),
     path('home/', HomeView.as_view(), name='home'),
+
+
+    path('tags/', TagListCreateView.as_view(), name='tags'),
+    path('tags/<int:pk>/', TagRetrieveUpdateDestroyView.as_view(), name='tags update'),
 ]
-
-
