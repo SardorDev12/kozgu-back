@@ -24,11 +24,6 @@ class PostSerializer(serializers.ModelSerializer):
 
         ]
 
-    category = serializers.SlugRelatedField(
-        many=True,
-        slug_field='name',
-        queryset=Category.objects.all()
-    )
 
     
     tag = serializers.SlugRelatedField(
