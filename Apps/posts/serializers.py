@@ -15,9 +15,12 @@ class PostSerializer(serializers.ModelSerializer):
             'author',
             'category',
             'tag',
+            'read_time',
             'created_at',
             'updated_at',
-            'status'
+            'status',
+            'article_pic',
+            'published_at'
 
         ]
 
