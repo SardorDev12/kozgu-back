@@ -4,7 +4,7 @@ from ..categories.views import CategoryListView,CategoryCreateView, CategoryDele
 from ..likes.views import LikeListView, LikeCreateView, LikeUndoView, LikeRetrieveView
 from ..comments.views import CommentRetrieveView, CommentListView, CommentCreateView, CommentUpdateView, CommentDeleteView
 from ..profiles.views import ProfileCreateView, ProfileListView, ProfileRetrieveUpdateDestroyView
-from ..accounts.views import RegisterView, HomeView, LogoutView
+from ..accounts.views import RegisterView, UserInfoView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from ..tags.views import TagCreateView, TagDeleteView, TagRetrieveView, TagUpdateView, TagListView
 
@@ -36,11 +36,10 @@ urlpatterns = [
     path('profiles/create/', ProfileCreateView.as_view(), name='profile-list-create'),
     path('profiles/<int:pk>/', ProfileRetrieveUpdateDestroyView.as_view(), name='profile-detail'),
 
-    path('login/', TokenObtainPairView.as_view(), name="token"),
+    path('token/', TokenObtainPairView.as_view(), name="token"),
     path('token/refresh/', TokenRefreshView.as_view(), name="token_refresh"),
     path('register/',  RegisterView.as_view(), name='register'),
-    path('logout/', LogoutView.as_view(), name='user_logout'),
-    path('home/', HomeView.as_view(), name='home'),
+    path('user/',  UserInfoView.as_view(), name='register'),
 
 
     path('tags/', TagListView.as_view(), name='Tags'),
