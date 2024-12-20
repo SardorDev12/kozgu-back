@@ -4,7 +4,7 @@ from ..categories.views import CategoryListView,CategoryCreateView, CategoryDele
 from ..likes.views import LikeListView, LikeCreateView, LikeUndoView, LikeRetrieveView
 from ..comments.views import CommentRetrieveView, CommentListView, CommentCreateView, CommentUpdateView, CommentDeleteView
 from ..profiles.views import ProfileCreateView, ProfileListView, ProfileRetrieveUpdateDestroyView
-from ..accounts.views import RegisterView, UserInfoView
+from ..accounts.views import RegisterView, UserInfoView, UserLogoutAPIView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from ..tags.views import TagCreateView, TagDeleteView, TagRetrieveView, TagUpdateView, TagListView
 
@@ -36,15 +36,15 @@ urlpatterns = [
     path('profiles/create/', ProfileCreateView.as_view(), name='profile-list-create'),
     path('profiles/<int:pk>/', ProfileRetrieveUpdateDestroyView.as_view(), name='profile-detail'),
 
-    path('token/', TokenObtainPairView.as_view(), name="token"),
-    path('token/refresh/', TokenRefreshView.as_view(), name="token_refresh"),
-    path('register/',  RegisterView.as_view(), name='register'),
-    path('user/',  UserInfoView.as_view(), name='register'),
-
-
     path('tags/', TagListView.as_view(), name='Tags'),
     path('tags/create/', TagCreateView.as_view(), name='Tags Create'),
     path('tags/<int:pk>/', TagRetrieveView.as_view(), name='Tags Retrieve'),
     path('tags/update/<int:pk>/', TagUpdateView.as_view(), name='Tags Update'),
     path('tags/delete/<int:pk>/', TagDeleteView.as_view(), name='Tags Delete'),
+
+    path('login/', TokenObtainPairView.as_view(), name="token"),
+    path('token/refresh/', TokenRefreshView.as_view(), name="token_refresh"),
+    path('register/',  RegisterView.as_view(), name='register'),
+    path('logout/',  UserLogoutAPIView.as_view(), name='register'),
+    path('user/',  UserInfoView.as_view(), name='register'),
 ]

@@ -1,49 +1,46 @@
 from rest_framework import serializers
-from .models import CustomUser
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+from .models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CustomUser
-        fields = ['id','email', 'username','password']
+        model = User
+        fields = ['first_name', 'last_name', 'username']
 
-class TokenObtainPairSerializer(TokenObtainPairSerializer):
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
+
+        token['first_name'] = user.first_name
         token['username'] = user.username
-        token['email'] = user.email
+
         return token
-    
-    def validate(self, attrs):
-        data = super().validate(attrs)
 
-        data['username'] = self.user.username
-        data['email'] = self.user.email
 
-        return data
-    
 class RegisterSerializer(serializers.ModelSerializer):
+
     class Meta:
-        model = CustomUser
-        fields = ['email', 'username','password']
-        extra_kwargs = {'password': {'write_only': True}}
-    
+        model = User
+        fields = ['first_name', 'last_name', 'username', 'password']
+
     def validate(self, attrs):
-        if CustomUser.objects.filter(username=attrs['username']):
-            raise serializers.ValidationError("This user has already registered.")
+
+        if User.objects.filter(username=attrs['username']):
+            raise serializers.ValidationError('This user has already registered!')
 
         return attrs
 
     def create(self, validated_data):
-        user = CustomUser.objects.create(
-            email = validated_data['email'],
-            username = validated_data['username'],
+        user = User.objects.create(
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name'],
+            username=validated_data['username'],
         )
-        user.set_password(validated_data['username'])
+        user.set_password(validated_data['password'])
         user.save()
 
         return user
-
-        
