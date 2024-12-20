@@ -20,10 +20,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    first_name = models.CharField(max_length=150)
-    last_name = models.CharField(max_length=150)
     username = models.CharField(max_length=150, unique=True)
-    profile_photo = models.ImageField(upload_to='images/profile_photos')
 
     is_active = models.BooleanField(verbose_name=_("Active"), default=True)
     is_staff = models.BooleanField(verbose_name=_("Staff status"), default=False)
