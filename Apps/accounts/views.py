@@ -1,8 +1,7 @@
 from .models import User
 from .serializers import UserSerializer
 from rest_framework import generics
-from .serializers import RegisterSerializer, TokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import RegisterSerializer
 from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
@@ -24,13 +23,6 @@ class UserInfoView(RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
-    
-class UserLogoutAPIView(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request, *args, **kwargs):
-        logout(request)
-        return Response({'detail': 'Logged out.'}, status=status.HTTP_200_OK)
 
 class UserCreateView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -46,7 +38,7 @@ class UserListView(generics.ListAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return User.objects.filter(email=user)
+        return User.objects.filter(id=user.id)
 
 class UserUpdateView(generics.UpdateAPIView):
     queryset = User.objects.all()
