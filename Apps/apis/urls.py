@@ -26,7 +26,7 @@ urlpatterns = [
     path('likes/create/', LikeCreateView.as_view(), name='Like Create'),
     path('likes/delete/<int:pk>/', LikeUndoView.as_view(), name='Like Undo'),
 
-    path('comments/', CommentListView.as_view(), name='Comments'),
+    path('posts/<int:pk>/comments/', CommentListView.as_view(), name='Comments'),
     path('comments/<int:pk>/', CommentRetrieveView.as_view(), name='Comment'),
     path('comments/create/', CommentCreateView.as_view(), name='Comment Create'),
     path('comments/update/<int:pk>/', CommentUpdateView.as_view(), name='Comment Update'),
