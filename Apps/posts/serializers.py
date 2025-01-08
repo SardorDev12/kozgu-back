@@ -2,7 +2,6 @@ from rest_framework import serializers
 
 from ..tags.models import Tag
 from .models import Post
-from ..categories.models import Category
 
 
 class PostSerializer(serializers.ModelSerializer):

@@ -7,6 +7,7 @@ from ..profiles.views import ProfileCreateView, ProfileListView, ProfileRetrieve
 from ..accounts.views import RegisterView, UserInfoView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from ..tags.views import TagCreateView, TagDeleteView, TagRetrieveView, TagUpdateView, TagListView
+from ..postImages.views import PostImageCreateRetrieveAPIView
 
 urlpatterns = [
     path('posts/', PostListView.as_view(), name='Posts'),
@@ -14,6 +15,7 @@ urlpatterns = [
     path('posts/<int:pk>/', PostRetrieveView.as_view(), name='Post Retrieve'),
     path('posts/update/<int:pk>/', PostUpdateView.as_view(), name='Post Update'),
     path('posts/delete/<int:pk>/', PostDeleteView.as_view(), name='Post Delete'),
+    path('post/<int:pk>/images/', PostImageCreateRetrieveAPIView.as_view(), name='post images create retrieve'),
 
     path('categories/', CategoryListView.as_view(), name='Categories'),
     path('categories/create/', CategoryCreateView.as_view(), name='Categories Create'),

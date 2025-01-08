@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'Apps.likes',
     'Apps.posts',
     'Apps.profiles',
+    'Apps.postImages',
     
     'drf_yasg',
     'corsheaders',
