@@ -19,9 +19,9 @@ class Post(models.Model):
     tag = models.ManyToManyField(Tag, related_name="posts", default=['New'])
     read_time = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    published_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
-    published_at = models.DateTimeField(auto_now=True)
     article_pic = models.ImageField(upload_to='article_pics', default='article_pics/default.jpg')
 
 

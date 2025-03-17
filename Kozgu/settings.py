@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'Apps.tags',
     'Apps.accounts',
     'Apps.apis',
@@ -38,7 +37,6 @@ INSTALLED_APPS = [
     'Apps.posts',
     'Apps.profiles',
     'Apps.postImages',
-    
     'drf_yasg',
     'corsheaders',
     'rest_framework',
